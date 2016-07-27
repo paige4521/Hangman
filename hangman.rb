@@ -72,15 +72,14 @@ user_name = gets.chomp
 puts "Hi #{user_name}.  Would you like to play the hangman game?   If so, please enter Y for Yes or N for No"
 user_response = gets.chomp
 
-while (is_y_n_q?(user_response)) do
+while (!is_y_n_q?(user_response)) do
   puts "\n Please \t enter a \t valid response."
   user_response = gets.chomp
 
- if user_response.downcase == "y"
-   puts " Great!  #{user_name}, We are going to have so much fun with this game. I have selected a word.  The objective /n is for you to guess the word within #{numb_guesses} guesses.  Let's get started. Please enter one letter now."
-
-   #game code
-   puts "Awesome! I am so excited that you want to play my little game.  Let's get /n
+ if user_response.downcase == "y" #I really should call the is_y_n_q method here
+   puts " Great!  #{user_name}, We are going to have so much fun with this game. I have selected a word.
+   The objective /n is for you to guess the word within #{numb_guesses} guesses.  Let's get started.
+   Please enter one letter now. Awesome! I am so excited that you want to play my little game.  Let's get /n
    a few housekeeping items out of the way. You should note you are playing a guessing. /n
    which is to say I have a much better chance at winning; however, don't be deterred, as I am also /n
    a new Rubyist and will likely screw up this code giving you the advantage.  To play the game you will
@@ -89,21 +88,22 @@ while (is_y_n_q?(user_response)) do
    body part. You may lose a maximum of five body parts. If you lose five body parts, you lose the game.
    Let's get started!  Please enter a character"
 
-   user_response = gets.chomp
- end
+   hang_guess = gets.chomp
   #Get user guess, verify its one character and then verify if it is in the array.
+    while
+      wrong_guesses <= numb_guesses #do #
+        if hang_guess.length > 1
+          hang_guess.length.push(hang_guess)+1
+          wrong_guesses = wrong_guesses+1 #keeps ongoing tally of users wrong guess.
+          puts "You have entered too many chacters.  Please enter one character.  Please try again."
+          hang_guess = gets.chomp
 
-  while wrong_guesses <= numb_guesses do #
-   if hang_guess.length > 1
-     hang_guess.length.push(hang_guess)+1
-     wrong_guesses = wrong_guesses+1 #keeps ongoing tally of users wrong guess.
-     puts "You have entered too many chacters.  Please enter one character.  Please try again."
-     hang_guess = gets.chomp
-
-     #Starts the testing of the game . User has entered one character
-
+     ############################################
+     ###Starts the testing of the game . User has entered one character
+     ############################################
    elsif   #user guesses correctly
-     random_word.split(//).include?(hang_guess) #.....remember hang_guess is a temporary.  hecks user guess against the characters in the array. (//) splits into characters
+     random_word.split(//).include?(hang_guess) #.....remember hang_guess is a temporary.  hecks user guess against the
+     #characters in the array. (//) splits into characters
      hang_guess.push(user_guess) #if the users guess is included in the random word, then push the value into this array.
      #user_guess.push(hang_guess) #push hang_guess into user_guess. Use user_guess from now on.
      #tally users guesses
